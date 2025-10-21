@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <h3>Halaman login</h3>
-    <div>form login</div>
+    <h4>Adel</h4>
   </q-page>
 </template>
 <script></script>
