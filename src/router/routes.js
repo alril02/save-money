@@ -23,10 +23,25 @@ const routes = [
   },
 
   // Always leave this as last one
+
+      { path: 'finance', component: () => import('pages/FinancePage.vue') },
+    ],
+  
+
+  {
+    path: '/login',
+    component: () => import('layouts/LoginLayout.vue'),
+    children: [{ path: '', component: () => import('pages/Login/LoginPage.vue') }],
+  },
+
+  {
+    path: '/signup',
+    component: () => import('layouts/LoginLayout.vue'),
+    children: [{ path: '', component: () => import('pages/Login/SignUpPage.vue') }],
+  },
+
   {
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue')
   }
-]
 
-export default routes

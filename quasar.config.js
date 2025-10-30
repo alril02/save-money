@@ -96,20 +96,16 @@ export default defineConfig((ctx) => {
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#framework
     framework: {
-      config: {},
-
-      // iconSet: 'material-icons', // Quasar icon set
-      // lang: 'en-US', // Quasar language pack
-
-      // For special cases outside of where the auto-import strategy can have an impact
-      // (like functional components as one of the examples),
-      // you can manually specify Quasar components/directives to be available everywhere:
-      //
-      // components: [],
-      // directives: [],
-
-      // Quasar plugins
-      plugins: [],
+      // Tambahkan konfigurasi Notify di sini 👇
+      config: {
+        notify: {
+          position: 'top', // posisi notifikasi di atas
+          timeout: 3000, // durasi tampil (opsional)
+          textColor: 'white',
+          actions: [{ icon: 'close', color: 'white' }],
+        },
+      },
+      plugins: ['Notify'],
     },
 
     // animations: 'all', // --- includes all animations
