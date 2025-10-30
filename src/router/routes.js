@@ -11,18 +11,20 @@ const routes = [
       { path: 'finance', component: () => import('pages/FinancePage.vue') },
     ],
   },
+
   {
-    path: '',
-    component: () => import('pages/login/LoginPage.vue'),
+    path: '/login',
+    component: () => import('layouts/LoginLayout.vue'),
+    children: [{ path: '', component: () => import('pages/Login/LoginPage.vue') }],
   },
 
   {
-    path: '',
-    component: () => import('pages/signup/SignUpPage.vue'),
+    path: '/signup',
+    component: () => import('layouts/LoginLayout.vue'),
+    children: [{ path: '', component: () => import('pages/Login/SignUpPage.vue') }],
   },
 
-  // Always leave this as last one
-  // but you can also remove it
+  // Halaman Error 404
   {
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue'),
