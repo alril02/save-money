@@ -1,30 +1,46 @@
 <template>
   <aside class="sidebar" aria-label="Sidebar">
-    <div class="brand">
-      <span class="logo" aria-hidden></span>CoachPro
-    </div>
+    <div class="brand"><span class="logo" aria-hidden></span>CoachPro</div>
     <nav>
-      <div @click="goToPage('/')"  class="nav-item hover:text-blue-600 active:text-blue-700 cursor-pointer transition-colors duration-200">
+      <div
+        @click="goToPage('/')"
+        class="nav-item hover:text-blue-600 active:text-blue-700 cursor-pointer transition-colors duration-200"
+      >
         <span class="icon">▦</span><span>Dashboard</span>
       </div>
 
-      <div @click="goToPage('/')" class="nav-item inactive hover:text-blue-600 active:text-blue-700 cursor-pointer transition-colors duration-200">
+      <div
+        @click="goToPage('/')"
+        class="nav-item inactive hover:text-blue-600 active:text-blue-700 cursor-pointer transition-colors duration-200"
+      >
         <span class="icon">👥</span><span>Squad</span>
       </div>
 
-      <div @click="goToPage('/')" class="nav-item inactive hover:text-blue-600 active:text-blue-700 cursor-pointer transition-colors duration-200">
+      <div
+        @click="goToPage('/')"
+        class="nav-item inactive hover:text-blue-600 active:text-blue-700 cursor-pointer transition-colors duration-200"
+      >
         <span class="icon">✉</span><span>Messenger</span>
       </div>
 
-      <div @click="goToPage('/')" class="nav-item inactive hover:text-blue-600 active:text-blue-700 cursor-pointer transition-colors duration-200">
+      <div
+        @click="goToPage('/')"
+        class="nav-item inactive hover:text-blue-600 active:text-blue-700 cursor-pointer transition-colors duration-200"
+      >
         <span class="icon">📊</span><span>Statistic</span>
       </div>
 
-      <div @click="goToPage('/')" class="nav-item inactive hover:text-blue-600 active:text-blue-700 cursor-pointer transition-colors duration-200">
+      <div
+        @click="goToPage('/')"
+        class="nav-item inactive hover:text-blue-600 active:text-blue-700 cursor-pointer transition-colors duration-200"
+      >
         <span class="icon">📅</span><span>Calendar</span>
       </div>
 
-      <div @click="goToPage('/')" class="nav-item inactive hover:text-blue-600 active:text-blue-700 cursor-pointer transition-colors duration-200">
+      <div
+        @click="goToPage('/')"
+        class="nav-item inactive hover:text-blue-600 active:text-blue-700 cursor-pointer transition-colors duration-200"
+      >
         <span class="icon">💰</span><span>Finance</span>
       </div>
     </nav>
@@ -33,8 +49,7 @@
   </aside>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped>
 .sidebar {
