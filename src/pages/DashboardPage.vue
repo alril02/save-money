@@ -1,5 +1,5 @@
 <template>
-   <main class="main"> 
+   <main class="main">
       <section class="grid" aria-hidden="false">
         <div class="left-col">
           <div class="card next-game" role="region" aria-label="Next game">

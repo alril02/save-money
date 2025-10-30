@@ -3,15 +3,25 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/DashboardPage.vue') }],
-      { path: 'squad', component: () => import('pages/SquadPage.vue') }],
+      { path: '', component: () => import('pages/DashboardPage.vue') },
+      { path: 'squad', component: () => import('pages/SquadPage.vue') },
       { path: 'messenger', component: () => import('pages/MessengerPage.vue') },
       { path: 'statistic', component: () => import('pages/StatisticPage.vue') },
       { path: 'calendar', component: () => import('pages/CalendarPage.vue') },
-      { path: 'finance', component: () => import('pages/FinancePage.vue') }
-  }, 
+      { path: 'finance', component: () => import('pages/FinancePage.vue') },
+    ],
+  },
+  {
+    path: '',
+    component: () => import('pages/login/LoginPage.vue'),
+  },
 
-  // Always leave this as last one,
+  {
+    path: '',
+    component: () => import('pages/signup/SignUpPage.vue'),
+  },
+
+  // Always leave this as last one
   // but you can also remove it
   {
     path: '/:catchAll(.*)*',
