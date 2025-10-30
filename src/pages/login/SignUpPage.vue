@@ -3,8 +3,15 @@
     <div class="phone shadow-10">
       <div class="wave"></div>
       <div class="content q-pa-md">
-        <h5 class="text-center text-grey-9 q-mb-md">Sign In</h5>
-        <q-form @submit.prevent="onLogin">
+        <h5 class="text-center text-grey-9 q-mb-md">Sign Up</h5>
+        <q-form @submit.prevent="onSignup">
+          <q-input
+            v-model="name"
+            label="Full Name"
+            outlined
+            dense
+            class="q-mb-md"
+          />
           <q-input
             v-model="email"
             label="Email"
@@ -21,8 +28,16 @@
             dense
             class="q-mb-md"
           />
+          <q-input
+            v-model="confirmPassword"
+            label="Confirm Password"
+            type="password"
+            outlined
+            dense
+            class="q-mb-md"
+          />
           <q-btn
-            label="Login"
+            label="Create Account"
             type="submit"
             color="pink-5"
             class="full-width q-mt-sm"
@@ -30,8 +45,8 @@
           />
         </q-form>
         <p class="text-center text-grey-8 q-mt-md">
-          Don’t have an account?
-          <router-link to="/signup" class="text-pink-5">Sign up</router-link>
+          Already have an account?
+          <router-link to="/login" class="text-pink-5">Sign in</router-link>
         </p>
       </div>
     </div>
@@ -41,12 +56,18 @@
 <script setup>
 import { ref } from 'vue'
 
+const name = ref('')
 const email = ref('')
 const password = ref('')
+const confirmPassword = ref('')
 
-const onLogin = () => {
-  console.log('Login clicked', email.value, password.value)
-  // Tambahkan logic autentikasi di sini
+const onSignup = () => {
+  if (password.value !== confirmPassword.value) {
+    alert('Passwords do not match!')
+    return
+  }
+  console.log('Sign up clicked:', name.value, email.value)
+  // Tambahkan logic register ke backend di sini
 }
 </script>
 

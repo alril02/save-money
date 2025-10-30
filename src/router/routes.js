@@ -3,20 +3,30 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/DashboardPage.vue') }],
-      { path: 'squad', component: () => import('pages/SquadPage.vue') }],
+      { path: '', component: () => import('pages/DashboardPage.vue') },
+      { path: 'squad', component: () => import('pages/SquadPage.vue') },
       { path: 'messenger', component: () => import('pages/MessengerPage.vue') },
       { path: 'statistic', component: () => import('pages/StatisticPage.vue') },
       { path: 'calendar', component: () => import('pages/CalendarPage.vue') },
       { path: 'finance', component: () => import('pages/FinancePage.vue') }
-  }, 
+    ]
+  },
 
-  // Always leave this as last one,
-  // but you can also remove it
+  // Halaman login dan signup tanpa layout
+  {
+    path: '/login',
+    component: () => import('pages/LoginPage.vue')
+  },
+  {
+    path: '/signup',
+    component: () => import('pages/SignUpPage.vue')
+  },
+
+  // Always leave this as last one
   {
     path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue'),
-  },
+    component: () => import('pages/ErrorNotFound.vue')
+  }
 ]
 
 export default routes
