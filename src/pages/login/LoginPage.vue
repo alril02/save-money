@@ -1,41 +1,34 @@
 <template>
-  <q-page class="bg-gradient flex flex-center">
-    <q-card class="q-pa-lg shadow-4 login-card">
-      <h3 class="text-center text-blue-8 q-mb-md">Selamat Datang Kembali!</h3>
-      <p class="text-center text-grey-7 q-mb-lg">
+  <q-page
+    class="max-w-[480px] mx-auto w-full flex items-center justify-center min-h-screen bg-cover bg-center"
+    style="
+      background-image:
+        linear-gradient(135deg, rgba(25, 50, 120, 0.9), rgba(230, 180, 80, 0.6)),
+        url('https://images.pexels.com/photos/164652/pexels-photo-164652.jpeg');
+    "
+  >
+    <q-card
+      class="w-[90%] max-w-[420px] rounded-2xl bg-white/90 border-2 border-yellow-400/50 shadow-[0_6px_20px_rgba(25,50,120,0.4)] p-6 md:p-8"
+    >
+      <h3 class="text-center text-blue-800 text-lg md:text-xl font-semibold mb-4">
+        Selamat Datang Kembali!
+      </h3>
+      <p class="text-center text-gray-600 mb-6 text-sm md:text-base">
         Masuk untuk mengelola keuanganmu bersama
-        <span class="text-yellow-9 text-bold">Safe Money 💰</span>
+        <span class="text-yellow-600 font-semibold">Safe Money 💰</span>
       </p>
 
       <!-- Input Email -->
-      <q-input
-        v-model="email"
-        label="Email"
-        type="email"
-        outlined
-        dense
-        class="q-mb-md gold-input"
-      />
+      <q-input v-model="email" label="Email" borderless dense class="q-mb-none" />
+
+      <div class="h-px bg-gray-300 my-2"></div>
 
       <!-- Input Password -->
-      <q-input
-        v-model="password"
-        label="Password"
-        type="password"
-        outlined
-        dense
-        class="q-mb-md gold-input"
-      />
+      <q-input v-model="password" label="Password" type="password" borderless dense />
 
       <!-- Checkbox Remember Me dan Lupa Password -->
-      <div class="row items-center justify-between q-mb-md">
-        <q-checkbox
-          v-model="rememberMe"
-          label="Remember me"
-          dense
-          color="yellow-9"
-          class="q-pa-none"
-        />
+      <div class="flex items-center justify-between mb-3">
+        <q-checkbox v-model="rememberMe" label="Remember me" dense color="yellow-9" class="p-0" />
         <q-btn
           flat
           label="Forgot password?"
@@ -49,33 +42,37 @@
       <q-btn
         label="Login"
         unelevated
-        class="full-width q-mb-md btn-gradient text-white text-weight-medium"
+        class="w-full mb-4 text-white text-weight-medium transition-all duration-300 transform hover:scale-105"
+        style="background: linear-gradient(90deg, #1e3a8a, #ffd700)"
         @click="login"
       />
 
       <!-- Garis pemisah -->
-      <div class="row items-center justify-center q-mb-md">
-        <div class="line"></div>
-        <span class="text-grey-7 q-mx-sm">atau login dengan</span>
-        <div class="line"></div>
+      <div class="flex items-center justify-center mb-4">
+        <div class="flex-1 h-px bg-blue-900/30"></div>
+        <span class="text-gray-600 mx-2 text-sm">atau login dengan</span>
+        <div class="flex-1 h-px bg-blue-900/30"></div>
       </div>
 
       <!-- Ikon login sosial -->
-      <div class="row justify-center q-gutter-md q-mb-md">
+      <div class="flex justify-center gap-4 mb-4">
         <q-btn flat round size="lg" color="white" @click="loginGoogle">
           <img
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
-            class="social-icon"
+            class="w-7 h-7 object-contain transition-transform duration-200 hover:scale-110"
           />
         </q-btn>
         <q-btn flat round size="lg" color="white" @click="loginFacebook">
           <img
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg"
-            class="social-icon"
+            class="w-7 h-7 object-contain transition-transform duration-200 hover:scale-110"
           />
         </q-btn>
-        <q-btn flat round size="lg" color="white" @click="loginPhone">
-          <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" class="social-icon" />
+        <q-btn flat round size="lg" color="white" @click="loginApple">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg"
+            class="w-7 h-7 object-contain transition-transform duration-200 hover:scale-110"
+          />
         </q-btn>
       </div>
 
@@ -119,7 +116,7 @@ export default {
         if (this.rememberMe) localStorage.setItem('rememberMe', 'true')
         else localStorage.removeItem('rememberMe')
 
-        setTimeout(() => this.$router.push({ path: '/dashboard' }), 1000)
+        setTimeout(() => this.$router.push({ path: '/app' }), 1000)
       } else {
         this.$q.notify({
           color: 'red-7',
@@ -153,11 +150,11 @@ export default {
         icon: 'info',
       })
     },
-    loginPhone() {
+    loginApple() {
       this.$q.notify({
         color: 'green-6',
         textColor: 'white',
-        message: 'Login dengan nomor HP (OTP) belum diaktifkan.',
+        message: 'Login dengan Apple ID belum diaktifkan.',
         icon: 'info',
       })
     },
@@ -165,78 +162,8 @@ export default {
       this.$router.push('/signup')
     },
   },
+  goToDashboard() {
+    this.$router.push('/app')
+  },
 }
 </script>
-
-<style scoped>
-.bg-gradient {
-  background:
-    linear-gradient(135deg, rgba(25, 50, 120, 0.9), rgba(230, 180, 80, 0.6)),
-    url('https://images.pexels.com/photos/164652/pexels-photo-164652.jpeg');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-card {
-  width: min(90%, 420px);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 2px solid rgba(255, 215, 0, 0.5);
-  box-shadow: 0 6px 20px rgba(25, 50, 120, 0.4);
-  padding: clamp(16px, 3vw, 24px);
-}
-
-/* Garis pemisah di tengah */
-.line {
-  flex: 1;
-  height: 1px;
-  background-color: rgba(30, 58, 138, 0.3);
-}
-
-/* Ikon sosial */
-.social-icon {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  transition: transform 0.2s ease;
-}
-.social-icon:hover {
-  transform: scale(1.1);
-}
-
-.btn-gradient {
-  background: linear-gradient(90deg, #1e3a8a, #ffd700);
-  border: none;
-  transition: 0.3s ease;
-}
-.btn-gradient:hover {
-  background: linear-gradient(90deg, #002d72, #ffcc00);
-  transform: scale(1.03);
-}
-
-.gold-input .q-field__control {
-  background: transparent !important;
-  border: 2px solid #ffd700 !important;
-  border-radius: 10px;
-}
-.gold-input.q-field--focused .q-field__control {
-  border-color: #1e3a8a !important;
-  box-shadow: 0 0 6px rgba(30, 58, 138, 0.4);
-}
-.gold-input .q-field__label {
-  color: #1e3a8a !important;
-  font-weight: 500;
-}
-
-/* Responsif */
-h3 {
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
-}
-p {
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
-}
-</style>

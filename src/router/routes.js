@@ -1,36 +1,39 @@
 const routes = [
+  // redirect utama ke login
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/DashboardPage.vue') },
-      { path: 'squad', component: () => import('pages/SquadPage.vue') },
-      { path: 'messenger', component: () => import('pages/MessengerPage.vue') },
-      { path: 'statistic', component: () => import('pages/StatisticPage.vue') },
-      { path: 'calendar', component: () => import('pages/CalendarPage.vue') },
-      { path: 'finance', component: () => import('pages/FinancePage.vue') },
-    ],
+    redirect: '/login',
   },
 
+  // halaman login
   {
     path: '/login',
     component: () => import('layouts/LoginLayout.vue'),
     children: [{ path: '', component: () => import('pages/Login/LoginPage.vue') }],
   },
 
-  {
-    path: '/register',
-    component: () => import('layouts/LoginLayout.vue'),
-    children: [{ path: '', component: () => import('pages/RegisterPage.vue') }],
-  },
-
+  // halaman signup
   {
     path: '/signup',
     component: () => import('layouts/LoginLayout.vue'),
     children: [{ path: '', component: () => import('pages/Login/SignUpPage.vue') }],
   },
 
-  // Halaman Error 404
+  // MAIN LAYOUT setelah login
+  {
+    path: '/app',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      // halaman default /app → BillingReports
+      { path: '', component: () => import('pages/DashboardPage.vue') },
+      { path: 'billingreports', component: () => import('pages/BillingReportsPage.vue') },
+      { path: 'transactions', component: () => import('pages/TransactionsPage.vue') },
+      { path: 'budget', component: () => import('pages/BudgetPage.vue') },
+      { path: 'settings', component: () => import('pages/SettingsPage.vue') },
+    ],
+  },
+
+  // 404
   {
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue'),
