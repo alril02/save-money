@@ -165,6 +165,7 @@ const list = [
   { title: 'Medicine', icon: 'medical_services', amount: 2680, transactions: 2, color: '#FF6B6B' },
   { title: 'Restaurant', icon: 'restaurant', amount: 2680, transactions: 5, color: '#FF9F40' },
   { title: 'Cloth', icon: 'checkroom', amount: 2680, transactions: 3, color: '#9B51E0' },
+  { title: 'Fuel', icon: 'local_gas_station', amount: 665, transactions: 2, color: '#27AE60' },
 ]
 </script>
 
