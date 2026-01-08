@@ -10,14 +10,8 @@
         dense
         class="bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-primary max-w-[480px] mx-auto w-full"
       >
-        <q-route-tab name="home" icon="home" label="Home" no-caps to="/app" />
-        <q-route-tab
-          name="graph"
-          icon="donut_small"
-          label="Graph"
-          no-caps
-          to="/app/billingreports"
-        />
+        <q-route-tab name="home" icon="home" label="Home" no-caps to="/app/dashboard" />
+        <q-route-tab name="graph" icon="donut_small" label="Graph" no-caps to="/app/reports" />
         <q-route-tab
           name="transactions"
           icon="receipt_long"
