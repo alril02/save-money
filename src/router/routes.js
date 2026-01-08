@@ -25,8 +25,8 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       // halaman default /app → BillingReports
-      { path: '', component: () => import('pages/DashboardPage.vue') },
-      { path: 'billingreports', component: () => import('pages/BillingReportsPage.vue') },
+      { path: 'dashboard', component: () => import('pages/DashboardPage.vue') },
+      { path: 'reports', component: () => import('pages/BillingReportsPage.vue') },
       { path: 'transactions', component: () => import('pages/TransactionsPage.vue') },
       { path: 'budget', component: () => import('pages/BudgetPage.vue') },
       { path: 'settings', component: () => import('pages/SettingsPage.vue') },
