@@ -1,134 +1,120 @@
 <template>
-   <main class="main">
-      <section class="grid" aria-hidden="false">
-        <div class="left-col">
-          <div class="card next-game" role="region" aria-label="Next game">
-            <div>
-              <div class="muted">Next game · Serie A · 21:00, 11 November, 2020</div>
-              <div style="height:12px"></div>
-              <div class="match">
-                <div class="team">
-                  <div class="logo">J</div>
-                  <div style="font-weight:700">Juventus</div>
-                </div>
+  <q-page
+    class="max-w-[480px] mx-auto w-full p-4 gap-y-2 flex items-center justify-center min-h-screen bg-cover bg-center"
+    style="
+      background-image:
+        linear-gradient(135deg, rgba(25, 50, 120, 0.9), rgba(230, 180, 80, 0.6)),
+        url('https://images.pexels.com/photos/164652/pexels-photo-164652.jpeg');
+    "
+  >
+    <!-- HEADER -->
+    <q-header
+      bordered
+      class="max-w-[480px] mx-auto w-full flex justify-around items-center shadow-xl p-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-primary fixed bottom text-white"
+    >
+      <q-toolbar class="min-h-[40px] px-2 py-0">
+        <q-btn flat round dense icon="menu" class="text-white" />
+        <q-toolbar-title class="text-center"> Today, ${{ todayAmount }} </q-toolbar-title>
+        <div class="text-white text-sm opacity-80">Upgrade</div>
+      </q-toolbar>
+    </q-header>
 
-                <div class="vs">vs</div>
+    <!-- TOGGLE BUTTON -->
+    <div class="flex w-full mt-1 bg-white rounded-xl p-1 shadow">
+      <button
+        class="flex-1 py-2 rounded-lg"
+        :class="tab === 'expense' ? 'bg-blue-500 text-white' : 'text-gray-600'"
+        @click="tab = 'expense'"
+      >
+        Expense
+      </button>
 
-                <div class="team">
-                  <div class="logo" style="background:#dff3ea;color:#0b6b4b">S</div>
-                  <div style="font-weight:700">Sassuolo</div>
-                </div>
-              </div>
-            </div>
-            <div style="min-width:170px;display:flex;flex-direction:column;align-items:flex-end;gap:10px">
-              <button style="background:transparent;border:1px dashed rgba(0,0,0,0.06);padding:8px 12px;border-radius:10px;">View calendar</button>
-              <div class="card" style="background:transparent;padding:6px 8px;border-radius:8px;border:1px solid rgba(0,0,0,0.04);box-shadow:none">
-                <div class="muted">PL 8</div>
-                <div style="display:flex;gap:8px;align-items:center">
-                  <div style="font-weight:700;font-size:14px">6</div><div class="muted">Victories</div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <button
+        class="flex-1 py-2 rounded-lg"
+        :class="tab === 'income' ? 'bg-blue-500 text-white' : 'text-gray-600'"
+        @click="tab = 'income'"
+      >
+        Income
+      </button>
+    </div>
 
-          <div class="card standings" role="region" aria-label="Standings">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-              <div style="font-weight:700">Standings</div>
-              <div class="muted">View all</div>
-            </div>
+    <!-- SAVINGS CARD -->
+    <div class="bg-white w-full rounded-xl p-5 shadow">
+      <div class="font-medium text-gray-500">March Savings</div>
 
-            <table aria-hidden="false">
-              <thead>
-                <tr><th style="width:40px"></th><th>Team</th><th style="width:48px">MP</th><th style="width:48px">W</th><th style="width:48px">D</th><th style="width:48px">L</th><th style="width:64px;text-align:right">PTS</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="rank">1</td>
-                  <td class="teamname"><div style="width:28px;height:28px;border-radius:6px;background:white;display:inline-flex;align-items:center;justify-content:center;margin-right:8px">J</div>Juventus</td>
-                  <td>8</td><td>6</td><td>1</td><td>1</td><td style="text-align:right">19</td>
-                </tr>
-                <tr>
-                  <td class="rank">2</td>
-                  <td class="teamname"><div style="width:28px;height:28px;border-radius:6px;background:white;display:inline-flex;align-items:center;justify-content:center;margin-right:8px">A</div>Atalanta</td>
-                  <td>8</td><td>5</td><td>1</td><td>2</td><td style="text-align:right">16</td>
-                </tr>
-                <tr>
-                  <td class="rank">3</td>
-                  <td class="teamname"><div style="width:28px;height:28px;border-radius:6px;background:white;display:inline-flex;align-items:center;justify-content:center;margin-right:8px">I</div>Inter</td>
-                  <td>8</td><td>5</td><td>0</td><td>3</td><td style="text-align:right">15</td>
-                </tr>
-                <tr>
-                  <td class="rank">4</td>
-                  <td class="teamname"><div style="width:28px;height:28px;border-radius:6px;background:white;display:inline-flex;align-items:center;justify-content:center;margin-right:8px">N</div>Napoli</td>
-                  <td>8</td><td>4</td><td>1</td><td>3</td><td style="text-align:right">13</td>
-                </tr>
-                <tr>
-                  <td class="rank">5</td>
-                  <td class="teamname"><div style="width:28px;height:28px;border-radius:6px;background:white;display:inline-flex;align-items:center;justify-content:center;margin-right:8px">M</div>Milan</td>
-                  <td>8</td><td>4</td><td>1</td><td>3</td><td style="text-align:right">13</td>
-                </tr>
-                <tr>
-                  <td class="rank">6</td>
-                  <td class="teamname"><div style="width:28px;height:28px;border-radius:6px;background:white;display:inline-flex;align-items:center;justify-content:center;margin-right:8px">R</div>Roma</td>
-                  <td>8</td><td>4</td><td>0</td><td>4</td><td style="text-align:right">12</td>
-                </tr>
-              </tbody>
-            </table>
+      <!-- Total Savings -->
+      <div class="text-3xl font-bold mt-2">${{ formatCurrency(savings) }}</div>
+
+      <!-- EARNED BAR -->
+      <div class="mt-3">
+        <div class="relative w-full h-6 bg-gray-200 rounded-full overflow-hidden">
+          <!-- Fill -->
+          <div
+            class="absolute inset-0 bg-blue-500 rounded-full"
+            :style="{ width: `calc(${earnedPercent}% - 30%)` }"
+          ></div>
+
+          <!-- Text inside -->
+          <div
+            class="absolute inset-0 px-3 flex items-center justify-between text-xs font-semibold"
+          >
+            <span class="text-white">Earned</span>
+            <span class="text-black font-bold">${{ formatCurrency(earned) }}</span>
           </div>
         </div>
+      </div>
 
-        <aside>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            <div class="card games-stat" style="padding:16px 16px 14px 16px">
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <div style="font-weight:700">Games statistic</div>
-                <div class="muted">View all statistic</div>
-              </div>
-              <div style="height:12px"></div>
-              <div class="progress" aria-hidden="true" title="Victories/draws/lost">
-                <i style="width:78%"></i>
-              </div>
-              <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:13px">
-                <div class="muted">PL 8</div>
-                <div style="display:flex;gap:8px">
-                  <div class="muted">Victories <strong style="color:#0e9aa7;margin-left:6px">6</strong></div>
-                  <div class="muted">Draws <strong style="margin-left:6px">1</strong></div>
-                  <div class="muted">Lost <strong style="margin-left:6px">1</strong></div>
-                </div>
-              </div>
-            </div>
+      <!-- SPENT BAR -->
+      <div class="mt-3">
+        <div class="relative w-full h-6 bg-gray-200 rounded-full overflow-hidden">
+          <!-- Fill -->
+          <div
+            class="absolute inset-0 bg-pink-400 rounded-full"
+            :style="{ width: `calc(${spendPercent}% - 50%)` }"
+          ></div>
 
-            <div class="right-grid">
-              <div class="stat">
-                <div class="label">Possession</div>
-                <div class="value">65%</div>
-                <div class="muted">Average this season</div>
-              </div>
-              <div class="stat">
-                <div class="label">Overall price</div>
-                <div class="value">$690.2m</div>
-                <div class="muted">Market value</div>
-              </div>
-              <div class="stat">
-                <div class="label">Transfer budget</div>
-                <div class="value">$240.6m</div>
-                <div class="muted">Available funds</div>
-              </div>
-              <div class="stat">
-                <div class="label">Average score</div>
-                <div class="value">7.2</div>
-                <div class="muted">Per match</div>
-              </div>
-            </div>
-
-            <div class="promo card">
-              <div style="font-size:14px;font-weight:600">Don't forget</div>
-              <div style="font-size:20px;font-weight:800">Setup training for next week</div>
-              <div class="cta">Go to training center</div>
-            </div>
+          <!-- Text inside -->
+          <div
+            class="absolute inset-0 px-3 flex items-center justify-between text-xs font-semibold"
+          >
+            <span class="text-white">Spend</span>
+            <span class="text-black font-bold">${{ formatCurrency(spend) }}</span>
           </div>
-        </aside>
-      </section>
-    </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOP SPENDING -->
+    <TopSpending :items="topSpending" />
+
+    <!-- MONTHLY BUDGET -->
+    <MonthlyBudget :items="monthlyBudget" />
+  </q-page>
 </template>
-<script setup></script>
+
+<script setup>
+import TopSpending from '../components/TopSpending.vue'
+import MonthlyBudget from '../components/MonthlyBudget.vue'
+import { useFinanceStore } from '../stores/useFinanceStore.js'
+
+const store = useFinanceStore()
+
+const {
+  todayAmount,
+  tab,
+  savings,
+  earned,
+  spend,
+  earnedPercent,
+  spendPercent,
+  topSpending,
+  monthlyBudget,
+} = store
+
+const formatCurrency = (value) => {
+  return Number(value).toLocaleString('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })
+}
+</script>
