@@ -43,7 +43,7 @@
 
     <div class="w-full space-y-2">
       <q-card flat bordered class="rounded-xl p-4">
-        <div class="flex items-center justify-center gap-4">
+        <div class="flex items-center justify-center gap-6">
           <!-- PIE CHART -->
           <div class="relative w-40 h-40 flex justify-center items-center">
             <Pie :data="chartData" :options="chartOptions" />
@@ -68,7 +68,7 @@
 
     <!-- TRANSACTION LIST -->
     <div class="w-full space-y-2">
-      <q-card v-for="(item, i) in list" :key="i" flat bordered class="rounded-xl p-4">
+      <q-card v-for="(item, i) in list" :key="i" flat bordered class="rounded-xl p-2">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-4">
             <div
